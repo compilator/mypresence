@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Career Landing AI
 
-## Getting Started
+AI-powered Career Landing Platform — turn a resume into a premium online career
+portfolio. Resume to AI Career Intelligence to Career Website.
 
-First, run the development server:
+See [PROJECT_PLAN.md](PROJECT_PLAN.md) for the full architecture and milestone
+plan. The current state is Milestone 0 (foundation only).
+
+## Tech stack
+
+Next.js (App Router) · TypeScript · TailwindCSS v4 · shadcn/ui-style primitives ·
+Framer Motion · Lucide · next-themes · Zustand · OpenAI (M3) · Vercel.
+
+## Getting started
 
 ```bash
+npm install
+cp .env.example .env.local   # add OPENAI_API_KEY before Milestone 3
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. Use the theme toggle in the header to preview light
+and dark.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` — start the dev server
+- `npm run build` — production build
+- `npm run start` — run the production build
+- `npm run lint` — lint
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```text
+app/         routes + global styles (design tokens)
+components/  ui primitives, layout shell, shared pieces
+features/    per-feature UI + career-flow store
+hooks/       reusable hooks
+lib/         config, theme registry, motion presets, service seams
+types/       CareerProfile and related contracts
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Design systems
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Two independent token namespaces live in `app/globals.css`:
 
-## Deploy on Vercel
+- Workspace (the SaaS app): soft, card-on-canvas, green accent, large radii.
+- Portfolio (public showcase): editorial, hairline, beautiful light/dark.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Light and dark only in the MVP; the theme registry (`lib/theme/themes.ts`) is
+structured to add more portfolio styles later.

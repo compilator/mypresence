@@ -1,0 +1,4 @@
+# Local secrets — exclude from Cursor indexing and AI context
+.env
+.env.local
+.env.*.local
