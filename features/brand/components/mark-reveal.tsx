@@ -32,7 +32,7 @@ export function MarkReveal({ title }: MarkRevealProps) {
         <p className="mb-16 text-sm font-medium tracking-[0.2em] text-brand-gray uppercase">
           {title}
         </p>
-        <LogoMark size={160} />
+        <LogoMark size={320} />
       </div>
     );
   }
@@ -44,7 +44,7 @@ export function MarkReveal({ title }: MarkRevealProps) {
           {title}
         </p>
         <motion.div style={{ opacity, scale }}>
-          <LogoMark size={192} />
+          <LogoMark size={384} />
         </motion.div>
       </div>
     </div>

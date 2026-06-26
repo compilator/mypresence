@@ -39,7 +39,7 @@ export function LogoMotion({ locale }: LogoMotionProps) {
   if (reduceMotion) {
     return (
       <div className="flex flex-col items-center py-20 text-center">
-        <LogoHorizontal height={48} />
+        <LogoHorizontal height={96} />
         <p className="mt-8 text-sm text-white/60">{t(motionCopy.subtitle, locale)}</p>
       </div>
     );
@@ -93,14 +93,14 @@ export function LogoMotion({ locale }: LogoMotionProps) {
             style={{ opacity: markOpacity }}
             className="absolute inset-0 flex items-center justify-center"
           >
-            <LogoMark size={128} />
+            <LogoMark size={256} />
           </motion.div>
 
           <motion.div
             style={{ opacity: lockupOpacity, x: lockupX }}
             className="absolute inset-0 flex items-center justify-center"
           >
-            <LogoHorizontal height={56} />
+            <LogoHorizontal height={112} />
           </motion.div>
         </div>
 

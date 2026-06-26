@@ -11,7 +11,7 @@ export function UsageMockups() {
     <div className="grid gap-6 lg:grid-cols-2">
       <MockupCard title="Website header">
         <div className="flex items-center justify-between border-b border-brand-graphite/8 px-5 py-4">
-          <LogoHorizontal height={24} />
+          <LogoHorizontal height={48} />
           <div className="hidden gap-2 sm:flex">
             <span className="h-2 w-12 rounded-full bg-brand-graphite/10" />
             <span className="h-2 w-12 rounded-full bg-brand-graphite/10" />
@@ -25,13 +25,13 @@ export function UsageMockups() {
 
       <MockupCard title="App icon">
         <div className="flex items-center justify-center py-10">
-          <LogoMark size={96} />
+          <LogoMark size={192} />
         </div>
       </MockupCard>
 
       <MockupCard title="Portfolio page">
         <div className="px-5 py-6">
-          <LogoWordmark height={20} />
+          <LogoWordmark height={40} />
           <p className="mt-6 text-2xl font-semibold tracking-tight">
             Product Designer
           </p>
@@ -44,7 +44,7 @@ export function UsageMockups() {
       <MockupCard title="Social preview">
         <div className="overflow-hidden">
           <div className="flex items-center gap-3 bg-brand-bg px-4 py-3">
-            <LogoMark size={28} />
+            <LogoMark size={56} />
             <div>
               <p className="text-sm font-medium">mypresence</p>
               <p className="text-xs text-brand-gray">mypresence.pro</p>
@@ -56,14 +56,14 @@ export function UsageMockups() {
 
       <MockupCard title="Browser tab">
         <div className="flex items-center gap-2 px-4 py-3">
-          <Image src="/icon.png" alt="mypresence" width={16} height={16} className="rounded-sm" />
+          <Image src="/icon.png" alt="mypresence" width={32} height={32} className="rounded-sm" />
           <span className="truncate text-sm text-brand-gray">mypresence — Brand</span>
         </div>
       </MockupCard>
 
       <MockupCard title="Avatar">
         <div className="flex items-center justify-center py-8">
-          <LogoMark size={72} />
+          <LogoMark size={144} />
         </div>
       </MockupCard>
     </div>

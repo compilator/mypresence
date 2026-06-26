@@ -31,7 +31,7 @@ function BrandPageContent() {
       {/* 01 Cover */}
       <BrandSection id="cover">
         <div className="flex flex-col items-center text-center">
-          <LogoHorizontal height={48} priority />
+          <LogoHorizontal height={96} priority />
           <p className="mt-10 text-lg text-brand-gray sm:text-xl">
             {t(c.cover.subtitle, locale)}
           </p>
@@ -67,16 +67,16 @@ function BrandPageContent() {
         <BrandSectionLabel>{t(c.logos.title, locale)}</BrandSectionLabel>
         <div className="grid gap-8 lg:grid-cols-2">
           <LogoVariantCard label="Primary">
-            <LogoHorizontal height={40} />
+            <LogoHorizontal height={80} />
           </LogoVariantCard>
           <LogoVariantCard label="Wordmark">
-            <LogoWordmark height={32} />
+            <LogoWordmark height={64} />
           </LogoVariantCard>
           <LogoVariantCard label="Mark">
-            <LogoMark size={80} />
+            <LogoMark size={160} />
           </LogoVariantCard>
           <LogoVariantCard label="App icon">
-            <LogoMark size={80} />
+            <LogoMark size={160} />
           </LogoVariantCard>
         </div>
         <ul className="mt-12 max-w-2xl space-y-3 text-brand-gray">
@@ -148,7 +148,7 @@ function BrandPageContent() {
       {/* 12 Final */}
       <BrandSection id="final" dark>
         <div className="flex flex-col items-center text-center">
-          <LogoMark size={80} />
+          <LogoMark size={160} />
           <h2 className="mt-12 max-w-3xl text-4xl leading-tight font-semibold tracking-tight sm:text-6xl">
             <HighlightText
               text={t(c.final.headline, locale)}
