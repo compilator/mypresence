@@ -11,6 +11,8 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ModeToggleGroup } from "@/features/appearance/mode-toggle-group";
 import { StyleCard } from "@/features/appearance/style-card";
+import { useCareerFlowHydrated } from "@/hooks/use-career-flow-hydrated";
+import { usePersistFlowStep } from "@/hooks/use-persist-flow-step";
 import { useCareerFlow } from "@/hooks/use-career-flow";
 import { PORTFOLIO_STYLES } from "@/lib/theme/themes";
 import { resolveMode } from "@/lib/theme/portfolio";
@@ -19,18 +21,21 @@ import { dict } from "@/lib/i18n";
 export default function AppearancePage() {
   const router = useRouter();
   const { resolvedTheme } = useTheme();
+  const hydrated = useCareerFlowHydrated();
+  usePersistFlowStep("appearance");
   const { profile, appearance, setAppearance } = useCareerFlow();
 
   React.useEffect(() => {
+    if (!hydrated) return;
     if (!profile) router.replace("/upload");
-  }, [profile, router]);
+  }, [hydrated, profile, router]);
 
   const effectiveMode = resolveMode(
     appearance.mode,
     resolvedTheme === "dark" ? "dark" : "light",
   );
 
-  if (!profile) return null;
+  if (!hydrated || !profile) return null;
 
   const previewProfile = {
     basics: profile.basics,

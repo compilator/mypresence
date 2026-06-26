@@ -14,18 +14,28 @@ import { ExperienceList } from "@/features/career-profile/experience-list";
 import { SkillsCloud } from "@/features/career-profile/skills-cloud";
 import { EducationList } from "@/features/career-profile/education-list";
 import { ProjectGrid } from "@/features/career-profile/project-grid";
+import { useCareerFlowHydrated } from "@/hooks/use-career-flow-hydrated";
+import { usePersistFlowStep } from "@/hooks/use-persist-flow-step";
 import { useCareerFlow } from "@/hooks/use-career-flow";
 import { dict } from "@/lib/i18n";
 
 export default function ProfilePage() {
   const router = useRouter();
-  const { profile } = useCareerFlow();
+  const hydrated = useCareerFlowHydrated();
+  usePersistFlowStep("profile");
+  const { profile, reset } = useCareerFlow();
 
   React.useEffect(() => {
+    if (!hydrated) return;
     if (!profile) router.replace("/upload");
-  }, [profile, router]);
+  }, [hydrated, profile, router]);
 
-  if (!profile) {
+  function handleStartOver() {
+    reset();
+    router.push("/upload");
+  }
+
+  if (!hydrated || !profile) {
     return (
       <FlowShell step="profile" title={dict.profile.title}>
         <div className="flex justify-center py-16 text-muted-foreground">
@@ -77,8 +87,13 @@ export default function ProfilePage() {
       </Card>
 
       <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-        <Button asChild variant="outline" className="w-full sm:w-auto">
-          <Link href="/upload">{dict.common.startOver}</Link>
+        <Button
+          type="button"
+          variant="outline"
+          className="w-full sm:w-auto"
+          onClick={handleStartOver}
+        >
+          {dict.common.startOver}
         </Button>
         <Button asChild size="lg" className="w-full sm:w-auto">
           <Link href="/appearance">

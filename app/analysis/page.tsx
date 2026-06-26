@@ -10,6 +10,8 @@ import {
   AnalysisProgress,
 } from "@/features/analysis/analysis-progress";
 import { ErrorRetry } from "@/features/analysis/error-retry";
+import { useCareerFlowHydrated } from "@/hooks/use-career-flow-hydrated";
+import { usePersistFlowStep } from "@/hooks/use-persist-flow-step";
 import { useCareerFlow } from "@/hooks/use-career-flow";
 import { analyzeResume } from "@/lib/services/ai/career-analyzer";
 import { withMedia } from "@/lib/profile-photo";
@@ -19,10 +21,13 @@ type Phase = "running" | "error" | "done";
 
 export default function AnalysisPage() {
   const router = useRouter();
+  const hydrated = useCareerFlowHydrated();
+  usePersistFlowStep("analysis");
+
   const {
     resume,
-    setProfile,
-    setIntelligence,
+    analysis,
+    setAnalysis,
     setStatus,
     setError,
     incrementGeneration,
@@ -45,13 +50,15 @@ export default function AnalysisPage() {
     }, 900);
 
     try {
-      const { profile, intelligence } = await analyzeResume(resume.text);
+      const snapshot = await analyzeResume(resume.text);
       clearInterval(interval);
 
-      const profileWithMedia = withMedia(profile, resume.media);
+      const profileWithMedia = withMedia(snapshot.profile, resume.media);
 
-      setProfile(profileWithMedia);
-      setIntelligence(intelligence);
+      setAnalysis({
+        ...snapshot,
+        profile: profileWithMedia,
+      });
       incrementGeneration();
       setStatus("ready");
       setPhase("done");
@@ -67,22 +74,37 @@ export default function AnalysisPage() {
   }, [
     resume,
     router,
-    setProfile,
-    setIntelligence,
+    setAnalysis,
     setStatus,
     setError,
     incrementGeneration,
   ]);
 
   React.useEffect(() => {
+    if (!hydrated) return;
+
+    if (analysis?.profile) {
+      router.replace("/profile");
+      return;
+    }
+
     if (!resume) {
       router.replace("/upload");
       return;
     }
+
     if (startedRef.current) return;
     startedRef.current = true;
     void runAnalysis();
-  }, [resume, router, runAnalysis]);
+  }, [hydrated, resume, analysis, router, runAnalysis]);
+
+  if (!hydrated) {
+    return (
+      <FlowShell step="analysis" title={dict.analysis.title}>
+        <Card className="border-border/40 p-10" />
+      </FlowShell>
+    );
+  }
 
   return (
     <FlowShell
