@@ -1,0 +1,49 @@
+---
+description: Controlled engineering workflow — plan, implement, review, verify, commit
+alwaysApply: true
+---
+
+# Development Workflow
+
+Full spec: [docs/DEVELOPMENT_WORKFLOW.md](../../docs/DEVELOPMENT_WORKFLOW.md)
+
+Every task: **Plan → Implement → Review → Verify → Commit → Merge → Push**
+
+## Plan (before editing)
+
+Read as needed: `docs/PRODUCT.md`, `docs/ARCHITECTURE.md`, `docs/AI_PIPELINE.md`, `CHANGELOG.md`, `AGENTS.md`. UI: portfolio hierarchy + product voice. AI: PII redaction, structured JSON, Zod.
+
+## Implement
+
+Smallest safe change. No unrelated refactors. CareerProfile stays single source of truth. Never bypass privacy-first AI.
+
+## Review
+
+Self-review changed files: types, naming, privacy leaks, a11y, portfolio hierarchy. AI changes: no raw PII to OpenAI, no unvalidated AI output rendered.
+
+## Verify (before commit)
+
+```bash
+npm run lint && npm run build
+npm run test   # when logic/tests affected
+```
+
+Do not commit on failure.
+
+## Commit / merge / push
+
+`git status` + `git diff` first. Commit format: `type(scope): short description` (feat, fix, docs, refactor, style, test, chore, perf). Never commit `.env.local` or secrets.
+
+## Non-negotiable
+
+No resume files or photos to OpenAI. No PII redaction bypass. No unvalidated AI output. No unrelated changes.
+
+## Task completion report
+
+```
+Implemented: ...
+Reviewed: ...
+Verified: lint / build / test
+Git: branch, commit, pushed yes/no
+Notes: ...
+```
