@@ -1,5 +1,7 @@
 import type { CareerProfile } from "@/types/career-profile";
 
+export type { AnalysisSnapshot, GenerationConfig } from "@/types/career-flow-session";
+
 /**
  * Intelligence data: neutral, derived insight (never invented facts). Stored
  * for future modules (Presence Score, Job Match, etc.) but not rendered today.
@@ -16,7 +18,7 @@ export interface IntelligenceData {
   industries: string[];
 }
 
-/** Full analysis result: display profile + intelligence. */
+/** @deprecated Use AnalysisSnapshot for persisted analysis results. */
 export interface CareerAnalysis {
   profile: CareerProfile;
   intelligence: IntelligenceData;

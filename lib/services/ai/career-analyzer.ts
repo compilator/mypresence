@@ -4,12 +4,13 @@ import { zodResponseFormat } from "openai/helpers/zod";
 
 import { EMPTY_CAREER_MEDIA } from "@/types/career-media";
 import type { CareerProfile } from "@/types/career-profile";
-import type { CareerAnalysis } from "@/types/intelligence";
+import type { AnalysisSnapshot } from "@/types/career-flow-session";
 import {
   ANALYSIS_MODEL,
   getOpenAIClient,
   hasOpenAIKey,
 } from "@/lib/services/ai/openai";
+import { buildGenerationConfig } from "@/lib/config/analysis";
 import { RESUME_ANALYSIS_SYSTEM_PROMPT } from "@/lib/services/ai/prompts/resume-analysis";
 import { careerAnalysisSchema, type AICareerAnalysis } from "@/lib/services/ai/schema";
 import { SAMPLE_INTELLIGENCE, SAMPLE_PROFILE } from "@/lib/services/mock/sample-profile";
@@ -66,10 +67,19 @@ function toCareerProfile(ai: AICareerAnalysis["display"]): CareerProfile {
  * is not configured, falls back to a deterministic sample so the flow stays
  * demoable. Any real failure is thrown so the UI can retry.
  */
-export async function analyzeResume(resumeText: string): Promise<CareerAnalysis> {
+export async function analyzeResume(resumeText: string): Promise<AnalysisSnapshot> {
+  const analyzedAt = new Date().toISOString();
+  const config = buildGenerationConfig();
+
   if (!hasOpenAIKey()) {
     await new Promise((resolve) => setTimeout(resolve, 1400));
-    return { profile: SAMPLE_PROFILE, intelligence: SAMPLE_INTELLIGENCE };
+    return {
+      profile: SAMPLE_PROFILE,
+      intelligence: SAMPLE_INTELLIGENCE,
+      config,
+      analyzedAt,
+      warnings: ["sample_data"],
+    };
   }
 
   const { redactedText, piiVault } = redactResumeText(resumeText);
@@ -95,5 +105,8 @@ export async function analyzeResume(resumeText: string): Promise<CareerAnalysis>
   return {
     profile,
     intelligence: parsed.intelligence,
+    config,
+    analyzedAt,
+    warnings: [],
   };
 }

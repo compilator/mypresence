@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { PortfolioTemplate } from "@/features/portfolio/portfolio-template";
 import { PublishDialog } from "@/features/portfolio/publish-dialog";
+import { useCareerFlowHydrated } from "@/hooks/use-career-flow-hydrated";
+import { usePersistFlowStep } from "@/hooks/use-persist-flow-step";
 import { useCareerFlow } from "@/hooks/use-career-flow";
 import { resolveMode } from "@/lib/theme/portfolio";
 import { dict } from "@/lib/i18n";
@@ -17,13 +19,16 @@ import { dict } from "@/lib/i18n";
 export default function PortfolioPage() {
   const router = useRouter();
   const { resolvedTheme } = useTheme();
+  const hydrated = useCareerFlowHydrated();
+  usePersistFlowStep("portfolio");
   const { profile, appearance, intelligence } = useCareerFlow();
 
   React.useEffect(() => {
+    if (!hydrated) return;
     if (!profile) router.replace("/upload");
-  }, [profile, router]);
+  }, [hydrated, profile, router]);
 
-  if (!profile) {
+  if (!hydrated || !profile) {
     return (
       <div className="grid min-h-dvh place-items-center text-muted-foreground">
         <Loader2 className="size-6 animate-spin" />

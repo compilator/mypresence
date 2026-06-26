@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Dropzone } from "@/features/resume-upload/dropzone";
 import { FileCard } from "@/features/resume-upload/file-card";
 import { PrivacyFirstBlock } from "@/features/trust/privacy-first-block";
+import { usePersistFlowStep } from "@/hooks/use-persist-flow-step";
 import { useCareerFlow } from "@/hooks/use-career-flow";
 import { extractResumeText } from "@/lib/services/resume/extract";
 import type { ExtractErrorCode } from "@/lib/services/resume/extract";
@@ -32,6 +33,7 @@ function uploadErrorMessage(code: ExtractErrorCode): string {
 
 export default function UploadPage() {
   const router = useRouter();
+  usePersistFlowStep("upload");
   const { setResume, setStatus, setError } = useCareerFlow();
   const [file, setFile] = React.useState<File | null>(null);
   const [isParsing, setIsParsing] = React.useState(false);
