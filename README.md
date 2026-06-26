@@ -1,51 +1,167 @@
-# Career Landing AI
+<div align="center">
 
-AI-powered Career Landing Platform — turn a resume into a premium online career
-portfolio. Resume to AI Career Intelligence to Career Website.
+<picture>
+  <img src="./public/brand/logo-horizontal.svg" width="360" alt="MyPresence">
+</picture>
 
-See [PROJECT_PLAN.md](PROJECT_PLAN.md) for the full architecture and milestone
-plan. The current state is Milestone 0 (foundation only).
+<br/>
 
-## Tech stack
+# Build your professional presence.
 
-Next.js (App Router) · TypeScript · TailwindCSS v4 · shadcn/ui-style primitives ·
-Framer Motion · Lucide · next-themes · Zustand · OpenAI (M3) · Vercel.
+Transform a resume into a beautiful professional portfolio with AI —
+private by design, transparent by default.
 
-## Getting started
+<br/>
 
-```bash
-npm install
-cp .env.example .env.local   # add OPENAI_API_KEY before Milestone 3
-npm run dev
+[Website](https://mypresence.pro) •
+[Brand](https://brand.mypresence.pro) •
+[Roadmap](./PROJECT_PLAN.md)
+
+</div>
+
+---
+
+## What is MyPresence?
+
+MyPresence helps professionals present themselves in the best possible way.
+
+Upload a resume.
+
+AI analyzes experience, skills and projects.
+
+The result is a modern portfolio that is easy to share, easy to read and optimized for both people and search engines.
+
+Nothing more.
+
+Nothing less.
+
+---
+
+## Built on one simple principle
+
+> We build trust before we build AI.
+
+Privacy is not an optional feature.
+
+It is the foundation of the product.
+
+Personal information is never used to improve models or build datasets.
+
+AI works with professional structure —
+experience, skills, technologies and projects.
+
+Not with identity.
+
+---
+
+## Philosophy
+
+A resume tells where you've been.
+
+A portfolio shows what you've done.
+
+Your presence explains who you are.
+
+We believe technology should remove friction, not control people.
+
+AI should help professionals present themselves —
+not replace them.
+
+---
+
+## Design Principles
+
+- Privacy first
+- Simple by default
+- Calm interface
+- Accessible to everyone
+- Fast everywhere
+- AI when useful
+- Human always in control
+
+---
+
+## Features
+
+- Resume upload
+- AI career analysis
+- Professional portfolio generation
+- SEO-ready public pages
+- Privacy-first architecture
+- Beautiful responsive layouts
+- Modern design system
+- Open architecture
+
+---
+
+## Roadmap
+
+Current status
+
+```
+Alpha → Beta → Public Preview → Stable
 ```
 
-Open http://localhost:3000. Use the theme toggle in the header to preview light
-and dark.
+Upcoming
 
-## Scripts
+- Portfolio themes
+- AI recommendations
+- Job matching
+- Public profiles
+- Career analytics
+- Recruiter mode
 
-- `npm run dev` — start the dev server
-- `npm run build` — production build
-- `npm run start` — run the production build
-- `npm run lint` — lint
+---
 
-## Project structure
+## Technology
 
-```text
-app/         routes + global styles (design tokens)
-components/  ui primitives, layout shell, shared pieces
-features/    per-feature UI + career-flow store
-hooks/       reusable hooks
-lib/         config, theme registry, motion presets, service seams
-types/       CareerProfile and related contracts
+- Next.js
+- TypeScript
+- React
+- Tailwind CSS
+- Vercel
+- Cloudflare
+
+Designed for simplicity.
+
+Built for performance.
+
+---
+
+## Project Structure
+
+```
+app/
+components/
+features/
+lib/
+public/
+types/
+docs/
 ```
 
-## Design systems
+---
 
-Two independent token namespaces live in `app/globals.css`:
+## Brand Promise
 
-- Workspace (the SaaS app): soft, card-on-canvas, green accent, large radii.
-- Portfolio (public showcase): editorial, hairline, beautiful light/dark.
+> We will never ask users to trade their privacy for better AI.
 
-Light and dark only in the MVP; the theme registry (`lib/theme/themes.ts`) is
-structured to add more portfolio styles later.
+---
+
+## Status
+
+🚧 Active development
+
+Every commit moves MyPresence closer to public beta.
+
+---
+
+<div align="center">
+
+Built with care.
+
+Designed for professionals.
+
+Made by people who believe privacy and good design can coexist.
+
+</div>
