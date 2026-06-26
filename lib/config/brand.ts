@@ -11,12 +11,9 @@ export const brandColors = {
 export type BrandColorKey = keyof typeof brandColors;
 
 export const brandAssets = {
-  logoMain: "/brand/logo-main.svg",
-  logoMark: "/brand/logo-mark.svg",
   logoHorizontal: "/brand/logo-horizontal.svg",
+  logoMark: "/brand/logo-mark.svg",
   logoWordmark: "/brand/logo-wordmark.svg",
-  appIcon: "/brand/app-icon.svg",
-  ogBrand: "/brand/og-brand.svg",
 } as const;
 
 export const brandDomains = {

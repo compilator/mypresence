@@ -1,61 +1,37 @@
+import Image from "next/image";
+
+import { brandAssets } from "@/lib/config/brand";
 import { cn } from "@/lib/utils";
-import { brandColors } from "@/lib/config/brand";
 
-export type LogoVariant = "color" | "monochrome" | "inverse";
+/** Official wordmark asset — never redrawn in code. */
+const WORDMARK_WIDTH = 463;
+const WORDMARK_HEIGHT = 67;
 
-interface BrandWordmarkProps {
+interface LogoWordmarkProps {
+  height?: number;
   className?: string;
-  variant?: LogoVariant;
+  priority?: boolean;
 }
-
-/** Lowercase mypresence wordmark with split brand colors. */
-export function BrandWordmark({
-  className,
-  variant = "color",
-}: BrandWordmarkProps) {
-  const myColor =
-    variant === "inverse"
-      ? brandColors.green
-      : variant === "monochrome"
-        ? brandColors.graphite
-        : brandColors.green;
-  const presenceColor =
-    variant === "inverse" ? brandColors.white : brandColors.graphite;
-
-  return (
-    <span
-      className={cn(
-        "inline-flex items-baseline font-semibold tracking-tight lowercase",
-        className,
-      )}
-      aria-label="mypresence"
-    >
-      <span style={{ color: myColor }}>my</span>
-      <span style={{ color: presenceColor }}>presence</span>
-    </span>
-  );
-}
-
-interface LogoWordmarkProps extends BrandWordmarkProps {
-  size?: "sm" | "md" | "lg" | "xl";
-}
-
-const sizeClasses = {
-  sm: "text-base",
-  md: "text-xl",
-  lg: "text-2xl",
-  xl: "text-4xl sm:text-5xl",
-} as const;
 
 export function LogoWordmark({
-  size = "md",
+  height = 24,
   className,
-  variant = "color",
+  priority = false,
 }: LogoWordmarkProps) {
+  const width = Math.round((WORDMARK_WIDTH / WORDMARK_HEIGHT) * height);
+
   return (
-    <BrandWordmark
-      className={cn(sizeClasses[size], className)}
-      variant={variant}
+    <Image
+      src={brandAssets.logoWordmark}
+      alt="mypresence"
+      width={width}
+      height={height}
+      aria-label="mypresence"
+      priority={priority}
+      className={cn("h-auto w-auto shrink-0", className)}
+      style={{ height, width: "auto" }}
     />
   );
 }
+
+export { WORDMARK_WIDTH, WORDMARK_HEIGHT };

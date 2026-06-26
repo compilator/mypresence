@@ -18,7 +18,7 @@ interface LogoMotionProps {
   locale: BrandLocale;
 }
 
-/** Apple-style scroll story: document → fold → bubble → mark → wordmark. */
+/** Scroll story using official logo assets for mark and lockup stages. */
 export function LogoMotion({ locale }: LogoMotionProps) {
   const ref = React.useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
@@ -31,15 +31,15 @@ export function LogoMotion({ locale }: LogoMotionProps) {
   const foldOpacity = useTransform(scrollYProgress, [0.15, 0.28, 0.38], [0, 1, 0]);
   const bubbleOpacity = useTransform(scrollYProgress, [0.32, 0.48, 0.58], [0, 1, 0]);
   const markOpacity = useTransform(scrollYProgress, [0.52, 0.68, 0.82], [0, 1, 1]);
-  const wordmarkOpacity = useTransform(scrollYProgress, [0.72, 0.88, 1], [0, 1, 1]);
-  const wordmarkX = useTransform(scrollYProgress, [0.72, 0.9], [24, 0]);
+  const lockupOpacity = useTransform(scrollYProgress, [0.72, 0.88, 1], [0, 1, 1]);
+  const lockupX = useTransform(scrollYProgress, [0.72, 0.9], [24, 0]);
 
   const { motion: motionCopy } = brandContent;
 
   if (reduceMotion) {
     return (
       <div className="flex flex-col items-center py-20 text-center">
-        <LogoHorizontal markSize={64} />
+        <LogoHorizontal height={48} />
         <p className="mt-8 text-sm text-white/60">{t(motionCopy.subtitle, locale)}</p>
       </div>
     );
@@ -53,7 +53,7 @@ export function LogoMotion({ locale }: LogoMotionProps) {
         </p>
         <p className="mb-16 text-sm text-white/60">{t(motionCopy.subtitle, locale)}</p>
 
-        <div className="relative flex h-48 w-full max-w-md items-center justify-center">
+        <div className="relative flex h-48 w-full max-w-lg items-center justify-center">
           <motion.div
             style={{ opacity: docOpacity }}
             className="absolute inset-0 flex items-center justify-center"
@@ -93,14 +93,14 @@ export function LogoMotion({ locale }: LogoMotionProps) {
             style={{ opacity: markOpacity }}
             className="absolute inset-0 flex items-center justify-center"
           >
-            <LogoMark size={128} variant="inverse" />
+            <LogoMark size={128} />
           </motion.div>
 
           <motion.div
-            style={{ opacity: wordmarkOpacity, x: wordmarkX }}
+            style={{ opacity: lockupOpacity, x: lockupX }}
             className="absolute inset-0 flex items-center justify-center"
           >
-            <LogoHorizontal markSize={72} variant="inverse" wordmarkClassName="text-3xl sm:text-4xl" />
+            <LogoHorizontal height={56} />
           </motion.div>
         </div>
 

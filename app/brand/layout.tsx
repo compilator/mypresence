@@ -16,10 +16,10 @@ export const metadata: Metadata = {
     siteName: "mypresence",
     images: [
       {
-        url: brandAssets.ogBrand,
-        width: 1200,
-        height: 630,
-        alt: "MyPresence Brand Guidelines",
+        url: brandAssets.logoHorizontal,
+        width: 644,
+        height: 124,
+        alt: "mypresence",
       },
     ],
     locale: "ru_RU",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: brandContent.meta.title.en,
     description: brandContent.meta.description.en,
-    images: [brandAssets.ogBrand],
+    images: [brandAssets.logoHorizontal],
   },
   metadataBase: new URL(getSiteUrl()),
 };

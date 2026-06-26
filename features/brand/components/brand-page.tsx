@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 import { LogoHorizontal } from "@/components/brand/logo-horizontal";
 import { LogoMark } from "@/components/brand/logo-mark";
 import { LogoWordmark } from "@/components/brand/logo-wordmark";
@@ -20,7 +18,7 @@ import {
   BrandLocaleProvider,
   useBrandLocale,
 } from "@/features/brand/hooks/use-brand-locale";
-import { brandAssets, brandContent, t } from "@/lib/config/brand";
+import { brandContent, t } from "@/lib/config/brand";
 
 function BrandPageContent() {
   const { locale, setLocale } = useBrandLocale();
@@ -33,14 +31,7 @@ function BrandPageContent() {
       {/* 01 Cover */}
       <BrandSection id="cover">
         <div className="flex flex-col items-center text-center">
-          <Image
-            src={brandAssets.logoMain}
-            alt="mypresence"
-            width={280}
-            height={48}
-            className="h-auto w-56 sm:w-72"
-            priority
-          />
+          <LogoHorizontal height={48} priority />
           <p className="mt-10 text-lg text-brand-gray sm:text-xl">
             {t(c.cover.subtitle, locale)}
           </p>
@@ -76,22 +67,16 @@ function BrandPageContent() {
         <BrandSectionLabel>{t(c.logos.title, locale)}</BrandSectionLabel>
         <div className="grid gap-8 lg:grid-cols-2">
           <LogoVariantCard label="Primary">
-            <LogoHorizontal markSize={40} />
+            <LogoHorizontal height={40} />
           </LogoVariantCard>
           <LogoVariantCard label="Wordmark">
-            <LogoWordmark size="lg" />
+            <LogoWordmark height={32} />
           </LogoVariantCard>
           <LogoVariantCard label="Mark">
-            <LogoMark size={64} />
+            <LogoMark size={80} />
           </LogoVariantCard>
           <LogoVariantCard label="App icon">
-            <Image
-              src={brandAssets.appIcon}
-              alt=""
-              width={80}
-              height={80}
-              className="rounded-[22%]"
-            />
+            <LogoMark size={80} />
           </LogoVariantCard>
         </div>
         <ul className="mt-12 max-w-2xl space-y-3 text-brand-gray">
@@ -163,7 +148,7 @@ function BrandPageContent() {
       {/* 12 Final */}
       <BrandSection id="final" dark>
         <div className="flex flex-col items-center text-center">
-          <LogoMark size={72} variant="inverse" />
+          <LogoMark size={80} />
           <h2 className="mt-12 max-w-3xl text-4xl leading-tight font-semibold tracking-tight sm:text-6xl">
             <HighlightText
               text={t(c.final.headline, locale)}

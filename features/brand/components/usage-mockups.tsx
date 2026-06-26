@@ -4,15 +4,14 @@ import Image from "next/image";
 
 import { LogoHorizontal } from "@/components/brand/logo-horizontal";
 import { LogoMark } from "@/components/brand/logo-mark";
-import { BrandWordmark } from "@/components/brand/logo-wordmark";
-import { brandAssets } from "@/lib/config/brand";
+import { LogoWordmark } from "@/components/brand/logo-wordmark";
 
 export function UsageMockups() {
   return (
     <div className="grid gap-6 lg:grid-cols-2">
       <MockupCard title="Website header">
         <div className="flex items-center justify-between border-b border-brand-graphite/8 px-5 py-4">
-          <LogoHorizontal markSize={24} />
+          <LogoHorizontal height={24} />
           <div className="hidden gap-2 sm:flex">
             <span className="h-2 w-12 rounded-full bg-brand-graphite/10" />
             <span className="h-2 w-12 rounded-full bg-brand-graphite/10" />
@@ -26,19 +25,13 @@ export function UsageMockups() {
 
       <MockupCard title="App icon">
         <div className="flex items-center justify-center py-10">
-          <Image
-            src={brandAssets.appIcon}
-            alt=""
-            width={96}
-            height={96}
-            className="rounded-[22%] shadow-card"
-          />
+          <LogoMark size={96} />
         </div>
       </MockupCard>
 
       <MockupCard title="Portfolio page">
         <div className="px-5 py-6">
-          <BrandWordmark className="text-lg" />
+          <LogoWordmark height={20} />
           <p className="mt-6 text-2xl font-semibold tracking-tight">
             Product Designer
           </p>
@@ -63,7 +56,7 @@ export function UsageMockups() {
 
       <MockupCard title="Browser tab">
         <div className="flex items-center gap-2 px-4 py-3">
-          <Image src="/icon.png" alt="" width={16} height={16} className="rounded-sm" />
+          <Image src="/icon.png" alt="mypresence" width={16} height={16} className="rounded-sm" />
           <span className="truncate text-sm text-brand-gray">mypresence — Brand</span>
         </div>
       </MockupCard>
