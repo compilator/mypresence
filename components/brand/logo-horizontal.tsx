@@ -28,7 +28,7 @@ export function LogoHorizontal({
       height={height}
       aria-label="mypresence"
       priority={priority}
-      className={cn("h-auto w-auto shrink-0", className)}
+      className={cn("brand-logo h-auto w-auto shrink-0", className)}
       style={{ height, width: "auto" }}
     />
   );

@@ -26,7 +26,7 @@ export function LogoMark({
       height={MARK_HEIGHT}
       aria-label="mypresence"
       priority={priority}
-      className={cn("shrink-0", className)}
+      className={cn("brand-logo shrink-0", className)}
       style={{ width: size, height: size }}
     />
   );
