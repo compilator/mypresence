@@ -13,6 +13,11 @@ import {
 import { buildGenerationConfig } from "@/lib/config/analysis";
 import { RESUME_ANALYSIS_SYSTEM_PROMPT } from "@/lib/services/ai/prompts/resume-analysis";
 import { careerAnalysisSchema, type AICareerAnalysis } from "@/lib/services/ai/schema";
+import {
+  formatFactViolations,
+  hasCriticalFactViolations,
+  validateDisplayFacts,
+} from "@/lib/services/ai/validate-display-facts";
 import { SAMPLE_INTELLIGENCE, SAMPLE_PROFILE } from "@/lib/services/mock/sample-profile";
 import { redactResumeText, restoreCareerProfile } from "@/lib/services/privacy/pii-redactor";
 
@@ -100,6 +105,13 @@ export async function analyzeResume(resumeText: string): Promise<AnalysisSnapsho
     throw new Error("The analysis could not be completed.");
   }
 
+  const factCheck = validateDisplayFacts(parsed.display, redactedText);
+  if (hasCriticalFactViolations(factCheck.violations)) {
+    throw new Error(
+      `Analysis failed factual integrity check: ${formatFactViolations(factCheck.violations).join(" ")}`,
+    );
+  }
+
   const profile = restoreCareerProfile(toCareerProfile(parsed.display), piiVault);
 
   return {
@@ -107,6 +119,8 @@ export async function analyzeResume(resumeText: string): Promise<AnalysisSnapsho
     intelligence: parsed.intelligence,
     config,
     analyzedAt,
-    warnings: [],
+    warnings: formatFactViolations(
+      factCheck.violations.filter((v) => v.severity === "warning"),
+    ),
   };
 }
