@@ -61,7 +61,7 @@ const coreExpertiseSchema = z.object({
   technologies: z.array(z.string()),
 });
 
-/** Display data: facts extracted verbatim from the resume. */
+/** Display rewrite layer: portfolio-ready language. Structural fields stay factual; prose is rewritten. */
 export const displaySchema = z.object({
   basics: basicsSchema,
   experience: z.array(experienceSchema),
@@ -84,7 +84,9 @@ export const intelligenceSchema = z.object({
 });
 
 export const careerAnalysisSchema = z.object({
+  /** Portfolio-facing rewrite — professional CV copy grounded in resume facts. */
   display: displaySchema,
+  /** Neutral inference for future modules — never rendered directly today. */
   intelligence: intelligenceSchema,
 });
 
