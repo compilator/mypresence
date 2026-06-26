@@ -1,5 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Presence">
-  <rect width="1200" height="630" fill="#fafafa"/>
-  <text x="600" y="320" font-family="system-ui, sans-serif" font-size="48" font-weight="600" fill="#1a1a1a" text-anchor="middle">Presence</text>
-  <text x="600" y="380" font-family="system-ui, sans-serif" font-size="24" fill="#666" text-anchor="middle">Professional Portfolio</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="mypresence">
+  <rect width="1200" height="630" fill="#f7f8fa"/>
+  <text x="600" y="320" font-family="Geist, system-ui, sans-serif" font-size="48" font-weight="600" fill="#1b1f23" text-anchor="middle" letter-spacing="-0.02em">
+    <tspan fill="#34c759">my</tspan><tspan fill="#1b1f23">presence</tspan>
+  </text>
+  <text x="600" y="380" font-family="Geist, system-ui, sans-serif" font-size="24" fill="#7b8190" text-anchor="middle">Professional Portfolio</text>
 </svg>

@@ -1,26 +1,38 @@
+import Image from "next/image";
 import Link from "next/link";
 
+import { LogoHorizontal } from "@/components/brand/logo-horizontal";
+import { brandAssets } from "@/lib/config/brand";
 import { cn } from "@/lib/utils";
-import { siteConfig } from "@/lib/config/site";
 
 interface LogoProps {
   href?: string;
   className?: string;
+  /** Use SVG component lockup (default) or raster/SVG file asset. */
+  variant?: "component" | "asset";
 }
 
-export function Logo({ href = "/", className }: LogoProps) {
+export function Logo({ href = "/", className, variant = "asset" }: LogoProps) {
+  const content =
+    variant === "asset" ? (
+      <Image
+        src={brandAssets.logoMain}
+        alt="mypresence"
+        width={180}
+        height={32}
+        className="h-7 w-auto sm:h-8"
+        priority
+      />
+    ) : (
+      <LogoHorizontal markSize={28} />
+    );
+
   return (
     <Link
       href={href}
-      className={cn(
-        "group inline-flex items-center gap-2 font-semibold tracking-tight",
-        className,
-      )}
+      className={cn("group inline-flex items-center", className)}
     >
-      <span className="grid size-7 place-items-center rounded-lg bg-primary text-primary-foreground shadow-soft">
-        <span className="size-2.5 rounded-full bg-primary-foreground/90" />
-      </span>
-      <span className="text-foreground">{siteConfig.name}</span>
+      {content}
     </Link>
   );
 }

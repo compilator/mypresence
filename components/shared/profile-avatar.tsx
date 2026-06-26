@@ -30,7 +30,7 @@ const sizeStyles = {
 } as const;
 
 /**
- * Circular professional portrait — single component for all Presence surfaces.
+ * Circular professional portrait — single component for all mypresence surfaces.
  * Always reads from CareerProfile.media.professionalPhoto. Apple Contacts–inspired:
  * perfect circle, minimal border, no shadow.
  */

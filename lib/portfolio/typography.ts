@@ -45,7 +45,7 @@ export const pfButton =
 export const pfPillButton =
   "inline-flex items-center rounded-full border border-portfolio-border/45 px-3.5 py-1.5 text-[0.8125rem] font-medium leading-none text-portfolio-fg transition-opacity hover:opacity-70";
 
-/** Hero headline — primary positioning in Presence green */
+/** Hero headline — primary positioning in mypresence green */
 export const pfHeroHeadline =
   "text-base font-medium leading-[1.45] text-portfolio-accent sm:text-lg";
 

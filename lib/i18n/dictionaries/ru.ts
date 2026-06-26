@@ -3,13 +3,13 @@ import { legalRu, trustRu } from "@/lib/i18n/dictionaries/ru-legal";
 
 export const ru = {
   brand: {
-    name: "Presence",
+    name: "mypresence",
     tagline: "Резюме → карьерный интеллект → сайт.",
   },
   meta: {
-    title: "Presence — резюме в карьерный сайт",
+    title: "mypresence — резюме в карьерный сайт",
     description:
-      "Presence превращает ваше резюме в премиальное карьерное портфолио с помощью ИИ. Резюме, карьерный интеллект и сайт.",
+      "mypresence превращает ваше резюме в премиальное карьерное портфолио с помощью ИИ. Резюме, карьерный интеллект и сайт.",
   },
   common: {
     themeToggle: "Переключить тему",
@@ -155,7 +155,7 @@ export const ru = {
     sectionEducation: "Образование",
     achievements: "Достижения",
     responsibilities: "Обязанности",
-    builtWith: "Создано в Presence",
+    builtWith: "Создано в mypresence",
     builtWithTagline: "Создайте своё профессиональное присутствие.",
     present: "наст. время",
     snapshot: {

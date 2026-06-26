@@ -15,19 +15,19 @@
 
   /* ---------- Workspace: light ---------- */
   --background: oklch(0.97 0.002 247);
-  --foreground: oklch(0.21 0.02 256);
+  --foreground: #1b1f23;
 
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.21 0.02 256);
+  --card-foreground: #1b1f23;
 
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.21 0.02 256);
+  --popover-foreground: #1b1f23;
 
-  --primary: oklch(0.723 0.219 149.579);
+  --primary: #34c759;
   --primary-foreground: oklch(0.985 0 0);
 
   --secondary: oklch(0.967 0.003 247);
-  --secondary-foreground: oklch(0.21 0.02 256);
+  --secondary-foreground: #1b1f23;
 
   --muted: oklch(0.967 0.003 247);
   --muted-foreground: oklch(0.55 0.02 257);
@@ -40,7 +40,7 @@
 
   --border: oklch(0.93 0.004 248);
   --input: oklch(0.93 0.004 248);
-  --ring: oklch(0.723 0.219 149.579);
+  --ring: #34c759;
 
   /* Soft, diffuse shadows (workspace) */
   --shadow-soft: 0 1px 2px 0 oklch(0.21 0.02 256 / 0.04);
@@ -59,7 +59,7 @@
   --popover: oklch(0.2 0.012 256);
   --popover-foreground: oklch(0.96 0.003 247);
 
-  --primary: oklch(0.723 0.219 149.579);
+  --primary: #34c759;
   --primary-foreground: oklch(0.18 0.02 256);
 
   --secondary: oklch(0.26 0.012 256);
@@ -76,7 +76,7 @@
 
   --border: oklch(1 0 0 / 0.08);
   --input: oklch(1 0 0 / 0.1);
-  --ring: oklch(0.723 0.219 149.579);
+  --ring: #34c759;
 
   --shadow-soft: 0 1px 2px 0 oklch(0 0 0 / 0.3);
   --shadow-card: 0 8px 30px -12px oklch(0 0 0 / 0.5);
@@ -90,10 +90,10 @@
 .portfolio-light {
   color-scheme: light;
   --portfolio-background: oklch(0.99 0 0);
-  --portfolio-foreground: oklch(0.18 0.01 256);
+  --portfolio-foreground: #1b1f23;
   --portfolio-muted: oklch(0.52 0.01 257);
   --portfolio-border: oklch(0.9 0.004 248);
-  --portfolio-accent: oklch(0.627 0.194 149.214);
+  --portfolio-accent: #34c759;
 }
 
 .portfolio-dark {
@@ -102,7 +102,7 @@
   --portfolio-foreground: oklch(0.95 0.005 247);
   --portfolio-muted: oklch(0.66 0.015 257);
   --portfolio-border: oklch(1 0 0 / 0.1);
-  --portfolio-accent: oklch(0.8 0.16 152);
+  --portfolio-accent: #34c759;
 }
 
 /* Editorial typography rendering on portfolio surfaces */
@@ -140,6 +140,11 @@
   --color-portfolio-muted: var(--portfolio-muted);
   --color-portfolio-border: var(--portfolio-border);
   --color-portfolio-accent: var(--portfolio-accent);
+
+  --color-brand-green: #34c759;
+  --color-brand-graphite: #1b1f23;
+  --color-brand-gray: #7b8190;
+  --color-brand-bg: #f7f8fa;
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);

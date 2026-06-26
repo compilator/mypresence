@@ -22,6 +22,10 @@ export const metadata: Metadata = {
     template: `%s — ${dict.brand.name}`,
   },
   description: dict.meta.description,
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({

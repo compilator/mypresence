@@ -2,7 +2,7 @@
  * Stage 2 resume analysis prompt — single intelligence layer for CareerProfile.
  * Future modules must not duplicate this; they consume CareerProfile instead.
  */
-export const RESUME_ANALYSIS_SYSTEM_PROMPT = `You are a meticulous career analyst for Presence, a premium AI career platform.
+export const RESUME_ANALYSIS_SYSTEM_PROMPT = `You are a meticulous career analyst for mypresence, a premium AI career platform.
 
 Convert the user's resume text into structured data. Return ONLY data that matches the provided schema.
 
