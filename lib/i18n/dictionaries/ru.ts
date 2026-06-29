@@ -29,7 +29,7 @@ export const ru = {
   landing: {
     hero: {
       badge: "От резюме к карьерному сайту за минуты",
-      titleLead: "Ваша карьера —",
+      titleLead: "Ваша карьера",
       titleAccent: "достойно представлена.",
       subtitle:
         "Загрузите резюме, и ИИ превратит его в премиальное карьерное портфолио. Без шаблонов и навыков дизайна.",
@@ -155,7 +155,7 @@ export const ru = {
     sectionEducation: "Образование",
     achievements: "Достижения",
     responsibilities: "Обязанности",
-    builtWith: "Создано в mypresence",
+    builtWith: "Создано в",
     builtWithTagline: "Создайте своё профессиональное присутствие.",
     present: "наст. время",
     snapshot: {

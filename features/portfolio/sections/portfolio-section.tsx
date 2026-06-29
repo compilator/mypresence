@@ -28,7 +28,7 @@ export function PortfolioSection({
       aria-labelledby={headingId}
       className={cn("border-t border-portfolio-border/40", className)}
     >
-      <div className="mx-auto w-full max-w-6xl px-6 py-24 sm:px-10 sm:py-28 lg:max-w-7xl lg:px-14 lg:py-32 xl:px-16">
+      <div className="mx-auto w-full max-w-6xl px-6 py-[91px] sm:px-10 sm:py-[107px] lg:max-w-7xl lg:px-14 lg:py-[123px] xl:px-16">
         <header className="mb-14 flex items-baseline gap-2 lg:mb-16">
           {Icon && (
             <Icon

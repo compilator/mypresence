@@ -22,20 +22,20 @@ export const pfCardTitle =
 /** Subtitles — headline, role — 16–18px medium */
 export const pfSubtitle = "text-base font-medium leading-[1.5] sm:text-lg";
 
-/** Body — 16px regular, comfortable measure */
+/** Body — ~18px regular, comfortable measure */
 export const pfBody =
-  "max-w-[42rem] text-base font-normal leading-[1.85] text-portfolio-fg/88";
+  "max-w-[42rem] text-[1.15rem] font-normal leading-[1.85] text-portfolio-fg/88";
 
 /** Muted body variant */
 export const pfBodyMuted =
-  "max-w-[42rem] text-base font-normal leading-[1.85] text-portfolio-muted";
+  "max-w-[42rem] text-[1.15rem] font-normal leading-[1.85] text-portfolio-muted";
 
 /** Caption — 13–14px */
 export const pfCaption = "text-[0.8125rem] font-normal leading-[1.6] text-portfolio-muted";
 
-/** Meta labels — 11–12px uppercase */
+/** Section / meta labels — ~14px uppercase (portfolio section headings) */
 export const pfMeta =
-  "text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-portfolio-muted/70";
+  "text-[0.86rem] font-medium uppercase tracking-[0.22em] text-portfolio-muted/70";
 
 /** Quiet inline link button */
 export const pfButton =
@@ -58,7 +58,7 @@ export const pfTag =
   "rounded-full border border-portfolio-border/35 px-2 py-0.5 text-[0.8125rem] font-normal text-portfolio-muted/90";
 
 /** Elegant list row */
-export const pfListItem = "flex gap-2.5 text-base font-normal leading-[1.8] text-portfolio-muted";
+export const pfListItem = "flex gap-2.5 text-[1.15rem] font-normal leading-[1.8] text-portfolio-muted";
 
 /** List bullet accent */
 export const pfBullet = "mt-[0.65rem] size-1 shrink-0 rounded-full bg-portfolio-accent/70";

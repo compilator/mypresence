@@ -22,7 +22,7 @@ export function EducationSection({ items }: EducationSectionProps) {
         >
           <div>
             <p className={pfCardTitle}>{item.institution}</p>
-            <p className={cn(pfCaption, "mt-2")}>{item.degree}</p>
+            <p className={cn(pfCaption, "mt-2 text-[0.93rem]")}>{item.degree}</p>
           </div>
           <span className={cn(pfCaption, "tabular-nums")}>
             {dateRange(item.startDate, item.endDate)}

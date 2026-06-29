@@ -108,7 +108,7 @@ export function PortfolioHero({
               </h2>
               <p
                 className={cn(
-                  "max-w-[42rem] text-pretty text-[0.9375rem] font-normal leading-[1.75] text-portfolio-fg/88 sm:text-base sm:leading-[1.8]",
+                  "max-w-[42rem] text-pretty text-[1.08rem] font-normal leading-[1.75] text-portfolio-fg/88 sm:text-[1.15rem] sm:leading-[1.8]",
                   clampSummary && "line-clamp-[8]",
                 )}
               >
@@ -124,7 +124,7 @@ export function PortfolioHero({
               </h2>
               <ul className="max-w-[42rem] space-y-2.5">
                 {topAchievements.slice(0, 5).map((item) => (
-                  <li key={item} className={cn(pfListItem, "text-[0.9375rem] leading-[1.7]")}>
+                  <li key={item} className={cn(pfListItem, "text-[1.08rem] leading-[1.7]")}>
                     <span className={pfBullet} aria-hidden />
                     <span>{item}</span>
                   </li>

@@ -13,6 +13,8 @@
 - Resume analysis prompt restructured into three strictly separated layers — factual extraction, display text, intelligence (`lib/services/ai/prompts/*`)
 - Factual integrity rules now explicitly forbid inventing technologies, tools, and skills, and state that rewriting changes wording, never facts
 - Bumped `ANALYSIS_PROMPT_VERSION` to `2026.06.2` (prompt semantics changed)
+- Portfolio polish: footer "Создано в" now pairs with the official wordmark asset (visible in portfolio dark scope), body text +15%, section headings +25%, content blocks tightened by 5px vertically
+- Homepage hero headline updated to "Ваша карьера достойно представлена."
 
 ## Alpha 0.1 — Privacy-first AI Analysis
 
