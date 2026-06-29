@@ -81,7 +81,7 @@ function ExperienceEntry({
             {responsibilities.map((line, i) => (
               <li
                 key={i}
-                className="flex gap-2.5 text-base font-normal leading-[1.8] text-portfolio-muted"
+                className="flex gap-2.5 text-[1.15rem] font-normal leading-[1.8] text-portfolio-muted"
               >
                 <span
                   className="mt-[0.65rem] size-1 shrink-0 rounded-full bg-portfolio-muted/35"

@@ -179,8 +179,11 @@
     background-color: color-mix(in oklch, var(--color-primary) 24%, transparent);
   }
 
-  /* Official logo SVGs: graphite → #F9FAFB in dark theme; green accent preserved. */
-  .dark .brand-logo {
+  /* Official logo SVGs: graphite → #F9FAFB in dark theme; green accent preserved.
+     Portfolio surfaces render dark independently of the workspace theme, so the
+     portfolio-dark scope needs the same inversion. */
+  .dark .brand-logo,
+  .portfolio-dark .brand-logo {
     filter: invert(1) hue-rotate(180deg) brightness(1.09) contrast(0.98);
   }
 }

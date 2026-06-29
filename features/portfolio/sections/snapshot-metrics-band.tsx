@@ -23,7 +23,7 @@ export function SnapshotMetricsBand({ metrics, className }: SnapshotMetricsBandP
       className={cn("border-t border-portfolio-border/40", className)}
       aria-labelledby={headingId}
     >
-      <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:px-10 sm:py-20 lg:max-w-7xl lg:px-14 xl:px-16">
+      <div className="mx-auto w-full max-w-6xl px-6 py-[59px] sm:px-10 sm:py-[75px] lg:max-w-7xl lg:px-14 xl:px-16">
         <header className="mb-10 flex items-baseline gap-2 lg:mb-12">
           <BarChart2
             className="size-4 shrink-0 translate-y-px text-portfolio-muted/45"

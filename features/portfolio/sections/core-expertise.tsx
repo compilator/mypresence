@@ -40,7 +40,7 @@ export function CoreExpertise({ areas, variant = "section" }: CoreExpertiseProps
                 pfBodyMuted,
                 isCompact
                   ? "mt-1.5 line-clamp-2 max-w-none text-[0.875rem] leading-[1.65]"
-                  : "mt-3 max-w-none text-[0.9375rem]",
+                  : "mt-3 max-w-none text-[1.08rem]",
               )}
             >
               {area.description}
