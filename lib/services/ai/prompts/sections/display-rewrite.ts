@@ -3,20 +3,21 @@ export const DISPLAY_REWRITE_RULES = `DISPLAY REWRITE LAYER (display object — 
 
 Purpose: rewrite resume facts into polished business CV / portfolio language. Improve clarity and recruiter readability. Reduce filler. Never add facts.
 
-Structural fields (extraction-faithful — copy from resume, minimal normalization only):
+LAYER 1 — FACTUAL EXTRACTION (extraction-faithful — copy from resume, minimal normalization only, NEVER reworded into new facts):
 - basics.name, basics.title, basics.location, basics.email, basics.links
 - experience.company, experience.role, experience.startDate, experience.endDate, experience.location
 - education.institution, education.degree, education.startDate, education.endDate
 - projects.name, projects.url, projects.tags
-- skills categories and skill names (every skill explicitly listed on the resume)
+- skills categories and skill names (only skills explicitly listed on the resume — never add a tool or technology)
+- coreExpertise.technologies (only tools explicitly named in the resume)
 
-Prose fields (display rewrite — action-result professional language):
+LAYER 2 — DISPLAY TEXT (rewrite into action-result professional language — wording only, no new facts):
 - basics.summary
 - basics.headline
 - experience.highlights (each bullet)
 - projects.description
 - highlights (top-level career highlights)
-- coreExpertise.title, coreExpertise.description (technologies list stays factual)
+- coreExpertise.title, coreExpertise.description
 
 ACHIEVEMENT REWRITE RULES (experience.highlights, highlights, project outcomes):
 - Start with a strong action verb where natural (same language as the resume).
