@@ -19,6 +19,7 @@ const SOURCE_RESUME = `
 2019 — наст. время
 Работа с сайтом компании.
 Увеличение конверсии на 20%.
+Стек: React, TypeScript.
 
 Проект: Корпоративный портал
 Описание: внутренний портал для сотрудников.
@@ -77,14 +78,26 @@ function buildDisplay(
 
 describe("resume analysis prompt", () => {
   it("uses the updated prompt version", () => {
-    expect(ANALYSIS_PROMPT_VERSION).toBe("2026.06.1");
+    expect(ANALYSIS_PROMPT_VERSION).toBe("2026.06.2");
   });
 
-  it("separates factual integrity, display rewrite, and intelligence layers", () => {
+  it("separates factual extraction, display text, and intelligence layers", () => {
     expect(RESUME_ANALYSIS_SYSTEM_PROMPT).toContain("FACTUAL INTEGRITY");
-    expect(RESUME_ANALYSIS_SYSTEM_PROMPT).toContain("DISPLAY REWRITE LAYER");
-    expect(RESUME_ANALYSIS_SYSTEM_PROMPT).toContain("INTELLIGENCE LAYER");
+    expect(RESUME_ANALYSIS_SYSTEM_PROMPT).toContain("LAYER 1 — FACTUAL EXTRACTION");
+    expect(RESUME_ANALYSIS_SYSTEM_PROMPT).toContain("LAYER 2 — DISPLAY TEXT");
+    expect(RESUME_ANALYSIS_SYSTEM_PROMPT).toContain("LAYER 3 — INTELLIGENCE");
+    expect(DISPLAY_REWRITE_RULES).toContain("LAYER 1 — FACTUAL EXTRACTION");
+    expect(DISPLAY_REWRITE_RULES).toContain("LAYER 2 — DISPLAY TEXT");
+    expect(INTELLIGENCE_LAYER_RULES).toContain("INTELLIGENCE LAYER");
+  });
+
+  it("forbids inventing facts in the factual integrity rules", () => {
     expect(FACTUAL_INTEGRITY_RULES).toContain("Do NOT invent companies");
+    expect(FACTUAL_INTEGRITY_RULES).toContain("skills");
+    expect(FACTUAL_INTEGRITY_RULES).toContain("Rewriting changes WORDING, never FACTS");
+  });
+
+  it("keeps achievement rewrite rules with strong action verbs", () => {
     expect(DISPLAY_REWRITE_RULES).toContain("ACHIEVEMENT REWRITE RULES");
     expect(DISPLAY_REWRITE_RULES).toContain("Разработал");
     expect(INTELLIGENCE_LAYER_RULES).toContain("Never invent industry labels");
@@ -133,6 +146,44 @@ describe("validateDisplayFacts", () => {
 
     const result = validateDisplayFacts(display, SOURCE_RESUME);
     expect(result.violations.some((v) => v.message.includes("50%"))).toBe(true);
+  });
+
+  it("accepts skills and technologies that exist in the source", () => {
+    const result = validateDisplayFacts(buildDisplay(), SOURCE_RESUME);
+    expect(
+      result.violations.some((v) => v.field.startsWith("skills")),
+    ).toBe(false);
+  });
+
+  it("flags invented technologies as a non-critical warning", () => {
+    const display = buildDisplay({
+      skills: [{ category: "Backend", skills: ["Kubernetes"] }],
+    });
+
+    const result = validateDisplayFacts(display, SOURCE_RESUME);
+    const techViolation = result.violations.find((v) =>
+      v.message.includes("Kubernetes"),
+    );
+    expect(techViolation).toBeDefined();
+    expect(techViolation?.severity).toBe("warning");
+    expect(hasCriticalFactViolations(result.violations)).toBe(false);
+  });
+
+  it("flags invented coreExpertise technologies", () => {
+    const display = buildDisplay({
+      coreExpertise: [
+        {
+          title: "Frontend Engineering",
+          description: "Создание корпоративных веб-приложений.",
+          technologies: ["GraphQL"],
+        },
+      ],
+    });
+
+    const result = validateDisplayFacts(display, SOURCE_RESUME);
+    expect(result.violations.some((v) => v.message.includes("GraphQL"))).toBe(
+      true,
+    );
   });
 
   it("rejects invented project names", () => {

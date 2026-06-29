@@ -5,6 +5,14 @@
 ### Added
 
 - Development workflow rule — `docs/DEVELOPMENT_WORKFLOW.md`, Cursor rule `.cursor/rules/development-workflow.mdc`
+- No-hallucination guard now detects invented technologies and skills in display output (`validateDisplayFacts`), surfaced as non-critical warnings
+- Tests covering invented technologies, invented coreExpertise technologies, and three-layer prompt separation
+
+### Changed
+
+- Resume analysis prompt restructured into three strictly separated layers — factual extraction, display text, intelligence (`lib/services/ai/prompts/*`)
+- Factual integrity rules now explicitly forbid inventing technologies, tools, and skills, and state that rewriting changes wording, never facts
+- Bumped `ANALYSIS_PROMPT_VERSION` to `2026.06.2` (prompt semantics changed)
 
 ## Alpha 0.1 — Privacy-first AI Analysis
 

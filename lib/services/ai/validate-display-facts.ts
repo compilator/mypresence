@@ -89,6 +89,50 @@ function validateStructuralEntities(
   return violations;
 }
 
+/**
+ * Flags technologies and skills that appear in the display layer but not in the
+ * source resume. These are surfaced as warnings (not critical) because skill
+ * names are frequently normalized (e.g. "Node" vs "Node.js"); the prompt is the
+ * hard guard, this is observability against silent skill inflation.
+ */
+function validateInventedTechnologies(
+  display: AICareerAnalysis["display"],
+  sourceText: string,
+): FactViolation[] {
+  const violations: FactViolation[] = [];
+  const seen = new Set<string>();
+
+  const candidates: Array<{ field: string; value: string }> = [
+    ...display.skills.flatMap((group, groupIndex) =>
+      group.skills.map((skill, skillIndex) => ({
+        field: `skills[${groupIndex}].skills[${skillIndex}]`,
+        value: skill,
+      })),
+    ),
+    ...display.coreExpertise.flatMap((item, itemIndex) =>
+      item.technologies.map((tech, techIndex) => ({
+        field: `coreExpertise[${itemIndex}].technologies[${techIndex}]`,
+        value: tech,
+      })),
+    ),
+  ];
+
+  for (const { field, value } of candidates) {
+    const normalized = normalizeForMatch(value);
+    if (normalized.length < 2 || seen.has(normalized)) continue;
+    seen.add(normalized);
+    if (!entityAppearsInSource(value, sourceText)) {
+      violations.push({
+        severity: "warning",
+        field,
+        message: `Technology/skill "${value}" appears in display output but not in source resume.`,
+      });
+    }
+  }
+
+  return violations;
+}
+
 function validateNumericFacts(
   display: AICareerAnalysis["display"],
   sourceText: string,
@@ -126,6 +170,7 @@ export function validateDisplayFacts(
 ): FactIntegrityResult {
   const violations = [
     ...validateStructuralEntities(display, sourceText),
+    ...validateInventedTechnologies(display, sourceText),
     ...validateNumericFacts(display, sourceText),
   ];
 
